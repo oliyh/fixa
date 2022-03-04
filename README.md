@@ -30,7 +30,7 @@ All that's needed is the `fixa.kaocha/wrap-run` plugin. Add it to your `tests.ed
 
 ### clojure.test
 
-Unfortunately due to the way clojure.test is written, a monkeypatched `deftest` is required to smuggle the fixtures through.
+Unfortunately due to the way clojure.test is written, an alternative `deftest` is required to smuggle the fixtures through.
 
 ```clj
 (require '[fixa.clj-test :refer [deftest]])

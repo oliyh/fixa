@@ -1,0 +1,2 @@
+#kaocha/v1 {:plugins [:hooks]
+            :kaocha.hooks/wrap-run [fixa.kaocha/wrap-run]}

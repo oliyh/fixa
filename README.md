@@ -8,6 +8,8 @@ Shouldn't we have the granularity of being able to apply particular fixtures to 
 
 fixa lets you define fixtures at the individual test level using a simple metadata notation.
 
+[![Clojars Project](https://img.shields.io/clojars/v/com.github.oliyh/fixa.svg)](https://clojars.org/com.github.oliyh/fixa)
+
 ## Usage
 
 Firstly you need to add the fixa metadata to your test vars, then choose the appropriate instructions for your test runner (kaocha or clojure.test).
@@ -45,3 +47,7 @@ Unfortunately due to the way clojure.test is written, an alternative `deftest` i
 (deftest ^{:fixa/fixture fixture-a} single-fixture-test
   (is (= 1 1)))
 ```
+
+## Development
+
+[![CircleCI](https://circleci.com/gh/oliyh/fixa/tree/main.svg?style=svg)](https://circleci.com/gh/oliyh/fixa/tree/main)

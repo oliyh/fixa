@@ -1,5 +1,6 @@
-(ns fixa.kaocha-test
-  (:require [clojure.test :refer [is deftest]]
+(ns fixa.clj-test.fixtures-test
+  (:require [clojure.test :refer [is] :as test]
+            [fixa.clj-test :refer [deftest]]
             [fixa.fixtures :refer [fixture-a fixture-b *fixtures-run*]]))
 
 (deftest ^{:fixa/fixture fixture-a} single-fixture-test

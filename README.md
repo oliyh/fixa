@@ -48,6 +48,29 @@ Unfortunately due to the way clojure.test is written, an alternative `deftest` i
   (is (= 1 1)))
 ```
 
+## Built-in fixtures
+
+Now that fixa has added the ability to have per-test fixtures, we can do more.
+The following are built-in fixtures provided by the library.
+
+### fail-after
+
+You can add a `:fixa/fail-after` to your tests which will make the test start to fail when the date is surpassed:
+
+```clj
+(deftest ^{:fixa/fail-after "2023-01-05"} christmas-decorations-test
+  (is (christmas-decorations)))
+```
+
+### run-after
+
+You can add a `:fixa/run-after` to your tests which will make the test skip evaluation until the date is surpassed:
+
+```clj
+(deftest ^{:fixa/run-after "2022-12-01"} future-v2-integration-test
+  (is (some-feature-only-available-in-v2)))
+```
+
 ## Development
 
 [![CircleCI](https://circleci.com/gh/oliyh/fixa/tree/main.svg?style=svg)](https://circleci.com/gh/oliyh/fixa/tree/main)

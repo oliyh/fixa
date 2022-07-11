@@ -1,2 +1,4 @@
 #kaocha/v1 {:plugins [:hooks]
-            :kaocha.hooks/wrap-run [fixa.kaocha/wrap-run]}
+            :kaocha.hooks/wrap-run [fixa.kaocha/wrap-run]
+            :tests [{:id :all
+                     :test-paths ["test/fixa/kaocha"]}]}

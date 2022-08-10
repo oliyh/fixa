@@ -7,7 +7,8 @@
   fail-after-past-test
   (is @*failed-after?*))
 
-(deftest ^{:fixa/fail-after (str (java.time.LocalDate/now))
+(deftest ^{:fixa/fail-after #?(:clj (str (java.time.LocalDate/now))
+                               :cljs "2022-08-10")
            :fixa/fixture fail-after-expectation}
   fail-after-today-test
   (is @*failed-after?*))

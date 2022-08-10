@@ -67,8 +67,8 @@ You can add a `:fixa/fail-after` to your tests which will make the test start to
 You can add a `:fixa/run-after` to your tests which will make the test skip evaluation until the date is surpassed:
 
 ```clj
-(deftest ^{:fixa/run-after "2022-12-01"} future-v2-integration-test
-  (is (some-feature-only-available-in-v2)))
+(deftest ^{:fixa/run-after "2023-12-01"} christmas-decorations-test
+  (is (christmas-decorations)))
 ```
 
 ## Development

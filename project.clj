@@ -5,7 +5,9 @@
             :url "http://opensource.org/licenses/MIT"}
   :repl-options {:init-ns fixa.core}
   :profiles {:provided {:dependencies [[org.clojure/clojure "1.10.3"]]}
-             :dev {:dependencies [[lambdaisland/kaocha "1.63.998"]]}}
+             :dev {:dependencies [[lambdaisland/kaocha "1.63.998"]
+                                  [com.lambdaisland/kaocha-cljs "1.2.123"]]}}
+  :test-paths ["test"]
   :test-selectors {:default (fn [m & _]
                               (re-find #"^fixa\.clj-test" (str (:ns m))))}
   :aliases {"kaocha" ["run" "-m" "kaocha.runner"]

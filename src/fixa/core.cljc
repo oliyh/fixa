@@ -1,17 +1,32 @@
 (ns fixa.core
   (:require [clojure.test :refer [join-fixtures is]])
-  (:import [java.time LocalDate]))
+  #?(:clj (:import [java.time LocalDate])))
+
+(defn- today []
+  #?(:clj (LocalDate/now)
+     :cljs (js/Date.)))
+
+(defn- is-after? [now then]
+  #?(:clj (.isAfter now then)
+     ;; todo fix this
+     :cljs (< now then)))
+
+(defn- parse-date [date]
+  (println "parse-date" date)
+  #?(:clj (LocalDate/parse date)
+     ;; todo is this right?
+     :cljs (js/Date. date)))
 
 (defn- run-after-fixture [date]
   (fn [f]
-    (if (.isAfter (LocalDate/now) (LocalDate/parse date))
+    (if (is-after? (today) (parse-date date))
       (f)
       (do (is :fixa.run-after/skipped)
           nil))))
 
 (defn- fail-after-fixture [date]
   (fn [f]
-    (is (.isAfter (LocalDate/parse date) (LocalDate/now))
+    (is (is-after? (parse-date date) (today))
         (str "Fail after" date))
     (f)))
 

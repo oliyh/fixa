@@ -8,10 +8,14 @@
   (swap! *ran-after-tests* conj :run-after-past-test)
   (is true))
 
-(deftest ^{:fixa/run-after (str (java.time.LocalDate/now))} run-after-today-test
+(deftest ^{:fixa/run-after #?(:clj (str (java.time.LocalDate/now))
+                              :cljs "2022-08-10")}
+  run-after-today-test
   (swap! *ran-after-tests* conj :run-after-today-test)
   (is false "This should not have run"))
 
-(deftest ^{:fixa/run-after (str (.plusDays (java.time.LocalDate/now) 1))} run-after-future-test
+(deftest ^{:fixa/run-after #?(:clj (str (.plusDays (java.time.LocalDate/now) 1))
+                              :cljs "2099-01-01")}
+  run-after-future-test
   (swap! *ran-after-tests* conj :run-after-today-test)
   (is false "This should not have run"))

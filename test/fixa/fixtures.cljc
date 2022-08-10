@@ -30,11 +30,17 @@
 
 (def ^:dynamic *ran-after-tests* (atom #{}))
 
-(defn run-after-expectation
-  "Ensure the run-after tests behaved properly"
-  [f]
-  (let [ran-after-tests (atom #{})]
-    (binding [*ran-after-tests* ran-after-tests]
-      (f)
-      (test/is (= #{:run-after-past-test}
-                  @ran-after-tests)))))
+#?(:clj (defn run-after-expectation
+          "Ensure the run-after tests behaved properly"
+          [f]
+          (let [ran-after-tests (atom #{})]
+            (binding [*ran-after-tests* ran-after-tests]
+              (f)
+              (test/is (= #{:run-after-past-test}
+                          @ran-after-tests)))))
+   :cljs (def run-after-expectation
+           {:before (fn []
+                      (reset! *ran-after-tests* #{}))
+            :after (fn []
+                     (test/is (= #{:run-after-past-test}
+                                 @*ran-after-tests*)))}))

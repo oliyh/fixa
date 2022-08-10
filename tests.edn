@@ -1,4 +1,13 @@
-#kaocha/v1 {:plugins [:hooks]
+#kaocha/v1 {:plugins [:hooks
+                      :kaocha.plugin/profiling
+                      :kaocha.plugin/print-invocations]
             :kaocha.hooks/wrap-run [fixa.kaocha/wrap-run]
-            :tests [{:id :all
-                     :test-paths ["test/fixa/kaocha"]}]}
+            :tests [{:id :clj
+                     :test-paths ["test/fixa/kaocha"]}
+                    {:id :cljs
+                     :source-paths ["src"]
+                     :test-paths ["test/fixa/kaocha"]
+                     :type :kaocha.type/cljs
+                     :bindings {kaocha.type.cljs/*debug* true}
+                     :cljs/precompile? true
+                     :cljs/repl-env cljs.repl.browser/repl-env}]}

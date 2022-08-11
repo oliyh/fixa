@@ -32,6 +32,8 @@
         (str "Fail after" date))
     (f)))
 
+;; todo perhaps can resolve fn using cljs.analyzer.api
+;; see https://github.com/lambdaisland/kaocha-cljs/blob/main/src/kaocha/cljs/run.clj#L6
 (defn get-fixture [meta]
   (when meta (println "kaocha hook" meta))
   (when-let [fixtures (seq (reduce into []

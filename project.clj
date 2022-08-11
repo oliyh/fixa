@@ -1,4 +1,4 @@
-(defproject com.github.oliyh/fixa "0.1.0"
+(defproject com.github.oliyh/fixa "0.1.1-SNAPSHOT"
   :description "Better fixtures for Clojure tests"
   :url "https://github.com/oliyh/fixa"
   :license {:name "The MIT License"

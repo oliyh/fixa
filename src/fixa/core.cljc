@@ -7,6 +7,8 @@
      :cljs (js/Date.)))
 
 (defn- is-after? [now then]
+  (println "is-after?" now then)
+  #?(:cljs (println (< now then)))
   #?(:clj (.isAfter now then)
      ;; todo fix this
      :cljs (< now then)))
@@ -31,12 +33,15 @@
     (f)))
 
 (defn get-fixture [meta]
-  (when-let [fixtures (reduce into []
-                              [(when-let [run-after (:fixa/run-after meta)]
-                                 [(run-after-fixture run-after)])
-                               (or (:fixa/fixtures meta)
-                                   (when-let [fixture (:fixa/fixture meta)]
-                                     [fixture]))
-                               (when-let [fail-after (:fixa/fail-after meta)]
-                                 [(fail-after-fixture fail-after)])])]
+  (when meta (println "kaocha hook" meta))
+  (when-let [fixtures (seq (reduce into []
+                                   [(when-let [run-after (:fixa/run-after meta)]
+                                      [(run-after-fixture run-after)])
+                                    (or (:fixa/fixtures meta)
+                                        (when-let [fixture (:fixa/fixture meta)]
+                                          (println "== fixture is " (type fixture))
+                                          [fixture]))
+                                    (when-let [fail-after (:fixa/fail-after meta)]
+                                      [(fail-after-fixture fail-after)])]))]
+    (println "found fixtures" fixtures)
     (join-fixtures fixtures)))

@@ -4,5 +4,7 @@
 (defn wrap-run [run]
   (fn [testable test-plan]
     (if-let [fixture (get-fixture (:kaocha.testable/meta testable))]
-      (fixture #(run testable test-plan))
-      (run testable test-plan))))
+      (do (println "running fixtures around test")
+          (fixture #(run testable test-plan)))
+      (do (println "no fixtures, just runing test")
+          (run testable test-plan)))))

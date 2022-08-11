@@ -12,5 +12,6 @@
                               (re-find #"^fixa\.clj-test" (str (:ns m))))}
   :aliases {"kaocha" ["run" "-m" "kaocha.runner"]
             "test-kaocha" "kaocha"
+            "test-kaocha-cljs" ["kaocha" "cljs"] ;; todo need browser already running
             "test-clj-test" ["test" ":default"]
-            "test-all" ["do" ["test-kaocha"] ["test-clj-test"]]})
+            "test-all" ["do" ["test-kaocha"] ["test-clj-test"] ["test-kaocha-cljs"]]})

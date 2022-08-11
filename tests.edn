@@ -2,6 +2,7 @@
                       :kaocha.plugin/profiling
                       :kaocha.plugin/print-invocations]
             :kaocha.hooks/wrap-run [fixa.kaocha/wrap-run]
+            :capture-output? false
             :tests [{:id :clj
                      :test-paths ["test/fixa/kaocha"]}
                     {:id :cljs

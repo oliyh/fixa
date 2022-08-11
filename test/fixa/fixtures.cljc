@@ -4,13 +4,13 @@
 (def ^:dynamic *fixtures-run* #{})
 
 (defn fixture-a [f]
+  (println "running fixture a")
   (binding [*fixtures-run* (conj *fixtures-run* :a)]
-    (println "running fixture a")
     (f)))
 
 (defn fixture-b [f]
+  (println "Running fixture b")
   (binding [*fixtures-run* (conj *fixtures-run* :b)]
-    (println "Running fixture b")
     (f)))
 
 (def ^:dynamic *failed-after?* (atom false))

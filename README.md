@@ -1,6 +1,6 @@
 # fixa
 
-Better fixtures for Clojure/script
+Better fixtures for Clojure
 
 Why does `clojure.test` limit us to a single set of `:each` and `:once` fixtures for all tests in a namespace?
 
